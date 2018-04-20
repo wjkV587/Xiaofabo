@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>Echarts实例</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- 引入ajax包，用于发送ajax请求到后台 -->
+       <script type="text/javascript" src="echarts/jquery.js"></script> 
+    <script type="text/javascript" src="echarts/echarts.js"></script> 
+</head>
+<body>
+<div id="main" style="width:750px;height:400px;">
+
+
+</div>
+<script>
+var myChart = echarts.init(document.getElementById('main'));
+//指定图表的配置项和数据
+
+var option = {
+	    title : {
+	        text: '推荐案件年份分布',
+	        subtext: '                      ——小法博'
+	    },
+	    tooltip : {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data:['案件数量']
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	           
+	            dataView : {show: true, readOnly: false},
+	            magicType : {show: true, type: ['line', 'bar']},
+	            saveAsImage: {//保存图片
+                    show: true
+                },
+	        }
+	    },
+	    calculable : true,
+	    xAxis : [
+	        {
+	            type : 'category',
+	            data : ['2007年','2008年','2009年','2010年','2011年','2012年','2013年','2014年','2015年','2016年']
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'案件数量',
+	            type:'bar',
+	            data:[13,2,32,34,5,15,73,18,29,20],
+	            markPoint : {
+	                data : [
+	                    {type : 'max', name: '最大值'},
+	                    {type : 'min', name: '最小值'}
+	                ]
+	            },
+	       
+	        }
+	    ]
+	};
+	                    
+myChart.setOption(option);
+
+</script>
+
+
+
+
+</body>
+</html>

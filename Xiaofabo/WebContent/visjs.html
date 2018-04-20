@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    
+    <title>Echarts可视化</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- 引入ajax包，用于发送ajax请求到后台 -->
+       <script type="text/javascript" src="echarts/jquery.js"></script> 
+    <script type="text/javascript" src="echarts/echarts.js"></script> 
+
+</head>
+<body>
+<center>
+<div id="main" style="width:800px;height:1200px;">
+
+
+</div>
+</center>
+<script>
+//基于准备好的dom，初始化ECharts实例
+var myChart = echarts.init(document.getElementById('main'));
+// 指定图表的配置项和数据
+
+var option = {
+		 
+    title: {
+        text: '关键因子——对应法条 简单示例'
+    },
+    tooltip: {},
+    animationDurationUpdate: 1500,
+    animationEasingUpdate: 'quinticInOut',
+    series:[{
+    	type: 'graph',
+        layout: 'none',
+        legendHoverLink : true,//是否启用图例 hover(悬停) 时的联动高亮。
+        
+        roam: true,
+        label: {
+            normal: {
+                show: true
+            }
+        },
+        draggable : true,//节点是否可拖拽，只在使用力引导布局的时候有用。
+        focusNodeAdjacency : true,//是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点。
+        symbol:'roundRect',
+        //color : '#6699FF', //背景颜色
+        symbolSize:[150,120],
+        edgeSymbol: ['circle', 'arrow'],
+        edgeSymbolSize: [4, 20],
+        edgeLabel: {
+            normal: {
+                textStyle: {
+                    fontSize: 20
+                }
+            }
+        },
+        data : [],
+        links:[],
+        lineStyle: {
+            normal: {
+                opacity: 0.9,
+                width: 2,
+                curveness: 0
+            }
+        }
+    	
+    }]
+    
+   
+    
+};
+
+
+
+//使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+$.get('jsonfile/1.json').done(function (data) {
+
+    myChart.setOption({
+        series : [{
+            data: data.data,
+            links:data.links
+        }
+        ]
+    })
+})
+
+</script>
+
+</body>
+</html>

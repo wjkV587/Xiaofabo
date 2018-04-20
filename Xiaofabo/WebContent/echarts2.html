@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Echarts实例</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- 引入ajax包，用于发送ajax请求到后台 -->
+       <script type="text/javascript" src="echarts/jquery.js"></script> 
+    <script type="text/javascript" src="echarts/echarts.js"></script> 
+    <script type="text/javascript" src="echarts/china.js"></script> 
+    <script type="text/javascript" src="echarts/shine.js"></script> 
+</head>
+<body>
+<div id="main" style="width:850px;height:600px;">
+
+</div>
+<script>
+var myChart = echarts.init(document.getElementById('main'),'shine');
+var option = {
+	    title : {
+	        text: '推荐案件地区分布',
+	        subtext: '                      ——小法博'
+	    },
+	    tooltip : {
+	        trigger: 'item'
+	    },
+	    dataRange: {
+	        orient: 'horizontal',
+	        min: 0,
+	        max: 550,
+	        text:['高','低'],           // 文本，默认为数值文本
+	        splitNumber:0
+	    },
+	   
+	    series : [
+	        {
+	            name: '推荐案件地区分布',
+	            type: 'map',
+	            mapType: 'china',
+	            mapLocation: {
+	                x: 'left'
+	            },
+	            selectedMode : 'multiple',
+	            itemStyle:{
+	                normal:{label:{show:true}},
+	                emphasis:{label:{show:true}}
+	            },
+	            //共31个省市
+	            data:[
+	                {name:'西藏', value:10},
+	                {name:'青海', value:24},
+	                {name:'宁夏', value:12},
+	                {name:'海南', value:36},
+	                {name:'甘肃', value:48},
+	                {name:'贵州', value:60},
+	                {name:'新疆', value:72},
+	                {name:'云南', value:84},
+	                {name:'重庆', value:96},
+	                {name:'吉林', value:22},
+	                {name:'山西', value:11},
+	                {name:'天津', value:17},
+	                {name:'江西', value:11},
+	                {name:'广西', value:213},
+	                {name:'陕西', value:123},
+	                {name:'黑龙江', value:23},
+	                {name:'内蒙古', value:34},
+	                {name:'安徽', value:34},
+	                {name:'北京', value:5, selected:true},
+	                {name:'福建', value:23},
+	                {name:'上海', value:23},
+	                {name:'湖北', value:34},
+	                {name:'湖南', value:23},
+	                {name:'四川', value:343},
+	                {name:'辽宁', value:324},
+	                {name:'河北', value:234},
+	                {name:'河南', value:32},
+	                {name:'浙江', value:243},
+	                {name:'山东', value:34},
+	                {name:'江苏', value:53},
+	                {name:'广东', value:533, selected:true}
+	            ]
+	        }
+	    ],
+	    
+	    animation: false
+	};
+	                    
+	                    
+myChart.setOption(option);
+</script>
+</body>
+</html>

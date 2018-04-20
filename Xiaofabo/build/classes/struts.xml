@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+<!-- 包结构 -->
+    <package name="default" namespace="/" extends="struts-default">
+     <!-- 配置action -->
+     <action name="solr_*" class="com.action.solraction" method="{1}">
+     <!-- 配置跳转页面 -->
+        <result name="success">/solrindex.jsp</result>
+        <result name="error">/solrerror.html</result>
+     </action>
+     <!-- 配置分组查询的action -->
+     <action name="solrgroup_*" class="com.action.solraction_group" method="{1}">
+     <!-- 配置跳转页面 -->
+        <result name="success">/solrindex.jsp</result>
+        <result name="error">/solrerror.html</result>
+     </action>
+     
+     <!-- 配置导出excel文件的action -->
+     <action name="export_*" class="com.action.poiexcel" method="{1}">
+     
+     </action>
+     <!-- 配置echarts Demo显示的action -->
+     <action name="echarts_*" class="com.action.echarts" method="{1}">
+           <result name="success">/echarts.jsp</result>     
+     </action>
+     
+     <!-- 案例分析的action -->
+     <action name="analyse_*" class="com.caseaction.analyse" method="{1}">
+           <result name="success">/test3.jsp</result>     
+     </action>
+     
+    </package>
+
+</struts>
